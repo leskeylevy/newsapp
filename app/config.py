@@ -1,11 +1,11 @@
 class Config:
     '''
-    configuration of the parent class genaral/global
+    configuration of the parent class general/global
     '''
     NEWS_SOURCE_API_BASE_URL = 'https://newsapi.org/v2/sources?apiKey={}'
 
 
-class ProdConfig(config):
+class ProdConfig(Config):
     '''
     production of the child class configuration
 
@@ -15,8 +15,9 @@ class ProdConfig(config):
     '''
     pass
 
-class DevConfig(config):
+
+class DevConfig(Config):
     '''
     Development configuation chilldcls
     '''
-    DEBUG =True
+    DEBUG = True

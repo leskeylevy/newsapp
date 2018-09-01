@@ -9,6 +9,8 @@ api_key = '95992d07cc4345d9bdcdccea9dcdd645'
 # print(api_key)
 # Getting the source base url
 base_url = app.config["NEWS_SOURCE_API_BASE_URL"]
+
+
 # print(base_url)
 
 def get_source():
@@ -47,3 +49,35 @@ def process_results(source_list):
         source_results.append(source_data)
 
     return source_results
+
+
+def get_article(id):
+    source_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(api_key, source_name)
+
+    with urllib.request.urlopen(source_articles_url) as url:
+        articles = url.read()
+        articles_response = json.loads(articles)
+
+        articles_list = None
+
+        if articles_response['articles']:
+            article_json = articles_response['articles']
+            articles_list = process_articles(article_json)
+
+    return articles_list
+
+
+def process_articles(articles):
+    article_list = []
+    for article in articles:
+        author = article.get('author')
+        title = article.get('title')
+        description = art.get('description')
+        url = article.get('url')
+        urlToImage = article.get('urlToImage')
+
+        article_data = Article(author, title, description, url, urlToImage)
+
+        article_list.append(article_data)
+
+    return article_list

@@ -16,11 +16,13 @@ def index():
     return render_template('index.html', title=title, news=news)
 
 
-@app.route('/source/<source_name>')
-def source(source_name):
+@app.route('/source/<name>')
+def articles(name):
     '''
     source page fxn that returns the source details page and data
     :param source_name:
     :return:
     '''
-    return render_template('source.html', name=source_name)
+    articles_display = get_articles(id)
+
+    return render_template('source.html',articles=articles_display)

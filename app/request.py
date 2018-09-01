@@ -1,6 +1,7 @@
 from app import app
 import urllib.request, json
 from .models import source
+from .models import articles
 
 Source = source.Source
 
@@ -33,6 +34,9 @@ def get_source():
     return source_results
 
 
+Article = articles.Article
+
+
 def process_results(source_list):
     '''
     fxn that processes the news results and transfor,ms the json reponse to a list of objects
@@ -51,12 +55,13 @@ def process_results(source_list):
     return source_results
 
 
-def get_article(id):
-    source_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(api_key, source_name)
+def get_article(name):
+    source_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(api_key, name)
 
     with urllib.request.urlopen(source_articles_url) as url:
         articles = url.read()
         articles_response = json.loads(articles)
+        print(articles_response)
 
         articles_list = None
 
@@ -72,11 +77,11 @@ def process_articles(articles):
     for article in articles:
         author = article.get('author')
         title = article.get('title')
-        description = art.get('description')
+        description = article.get('description')
         url = article.get('url')
         urlToImage = article.get('urlToImage')
 
-        article_data = Article(author, title, description, url, urlToImage)
+        article_data = Article (author, title, description, url, urlToImage)
 
         article_list.append(article_data)
 

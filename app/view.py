@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .request import get_source
+from .request import get_source,get_article
 
 
 # Views
@@ -20,9 +20,9 @@ def index():
 def articles(name):
     '''
     source page fxn that returns the source details page and data
-    :param source_name:
+    :param name:
     :return:
     '''
-    articles_display = get_articles(id)
+    articles_display = get_article(name)
 
     return render_template('source.html',articles=articles_display)

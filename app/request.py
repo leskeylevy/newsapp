@@ -56,12 +56,12 @@ def process_results(source_list):
 
 
 def get_article(name):
-    source_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(api_key, name)
+    source_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(name,api_key,)
 
     with urllib.request.urlopen(source_articles_url) as url:
         articles = url.read()
         articles_response = json.loads(articles)
-        print(articles_response)
+        # print(articles_response)
 
         articles_list = None
 

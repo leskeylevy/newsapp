@@ -2,5 +2,14 @@
 
     {% for source in source_list %}
         <li>{{source.name}}</li>
+        <a href="/source/{{source.name}}">Top stories from {{source.name}}</a>
     {% endfor %}
 {% endmacro %}
+
+{% macro displayArticlesList(articles_list) %}
+    {% for article in articles_list %}
+        <li>{{article.title}}</li>
+        <li>{{article.author}}</li>
+        <img src="{{article.urlToImage}}" alt="">
+    {%endfor%}
+{% endmacro%}

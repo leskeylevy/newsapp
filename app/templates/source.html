@@ -1,1 +1,10 @@
-<h1> Hello yoh {{ name }}</h1>
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+<!--news sources section-->
+{% block content %}
+    <h3>Today's news</h3>
+    <ul>
+        {{ macro.displayArticlesList(articles)}}
+    </ul>
+    {% endblock %}

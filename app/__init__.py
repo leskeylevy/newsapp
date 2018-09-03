@@ -1,12 +1,14 @@
 from flask import Flask
-from config import DevConfig
+from config import config_options
+
+
 # from flask_bootstrap import Bootstrap
 
 # Initializing application
 def create_app(config_name):
     app = Flask(__name__)
 
-# SETTING UP CONFIGURATION
+    # SETTING UP CONFIGURATION
     app.config.from_object(config_options[config_name])
 
     return app

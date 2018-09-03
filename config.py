@@ -1,4 +1,5 @@
 import os
+
 class Config:
     '''
     configuration of the parent class general/global
@@ -22,3 +23,8 @@ class DevConfig(Config):
     Development configuation chilldcls
     '''
     DEBUG = True
+
+config_options = {
+    'development':DevConfig,
+    'production' :ProdConfig
+}

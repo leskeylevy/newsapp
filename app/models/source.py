@@ -3,8 +3,8 @@ class Source:
     source clss definiton
     '''
 
-    def __init__(self,name,url,description,id):
+    def __init__(self, name, url, description, rt):
         self.name = name
         self.url = url
         self.description = description
-        self.id  = id
+        self.rt = rt

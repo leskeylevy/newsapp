@@ -1,4 +1,4 @@
-from app import app
+
 import urllib.request, json
 from .model import Source, Article
 
@@ -12,10 +12,10 @@ base_url = None
 
 
 def configure_request(app):
-    global api_key, base_url
-    api_key = app.conifig['NEWS_SOURCE_API_KEY']
+    global api_key, base_url , article_url
+    api_key = app.config['NEWS_SOURCE_API_KEY']
     base_url = app.config['NEWS_SOURCE_API_BASE_URL']
-    article_url = app.config['https://newsapi.org/v2/top-headlines?sources={}&apiKey={}']
+    article_url = app.config['ARTICLES_BASE_URL']
 
 
 # print(base_url)

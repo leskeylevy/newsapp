@@ -15,7 +15,7 @@ def configure_request(app):
     global api_key, base_url
     api_key = app.conifig['NEWS_SOURCE_API_KEY']
     base_url = app.config['NEWS_SOURCE_API_BASE_URL']
-    article_base_url = app.config['https://newsapi.org/v2/top-headlines?sources={}&apiKey={}']
+    article_url = app.config['https://newsapi.org/v2/top-headlines?sources={}&apiKey={}']
 
 
 # print(base_url)
@@ -40,7 +40,7 @@ def get_source():
     return source_results
 
 
-Article = articles.Article
+# Article = articles.Article
 
 
 def process_results(source_list):
@@ -63,7 +63,7 @@ def process_results(source_list):
 
 
 def get_article(name):
-    source_articles_url = article_base_url.format(name, api_key, )
+    source_articles_url = article_url.format(name, api_key, )
 
     with urllib.request.urlopen(source_articles_url) as url:
         articles = url.read()

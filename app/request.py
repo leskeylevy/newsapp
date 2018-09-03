@@ -1,15 +1,21 @@
 from app import app
 import urllib.request, json
-from .models import source
-from .models import articles
+from .model import Source, Article
 
-Source = source.Source
+# Source = source.Source
 
 # Getting api key
-api_key = '95992d07cc4345d9bdcdccea9dcdd645'
+api_key = None
 # print(api_key)
 # Getting the source base url
-base_url = app.config["NEWS_SOURCE_API_BASE_URL"]
+base_url = None
+
+
+def configure_request(app):
+    global api_key, base_url
+    api_key = app.conifig['NEWS_SOURCE_API_KEY']
+    base_url = app.config['NEWS_SOURCE_API_BASE_URL']
+    article_base_url = app.config['https://newsapi.org/v2/top-headlines?sources={}&apiKey={}']
 
 
 # print(base_url)
@@ -50,14 +56,14 @@ def process_results(source_list):
         description = source_item.get('description')
         rt = source_item.get('id')
 
-        source_data = Source(name, url, description,rt)
+        source_data = Source(name, url, description, rt)
         source_results.append(source_data)
 
     return source_results
 
 
 def get_article(name):
-    source_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(name,api_key,)
+    source_articles_url = article_base_url.format(name, api_key, )
 
     with urllib.request.urlopen(source_articles_url) as url:
         articles = url.read()
@@ -82,7 +88,7 @@ def process_articles(articles):
         url = article.get('url')
         urlToImage = article.get('urlToImage')
 
-        article_data = Article (author, title, description, url, urlToImage)
+        article_data = Article(author, title, description, url, urlToImage)
 
         article_list.append(article_data)
 

@@ -3,12 +3,10 @@ from config import DevConfig
 # from flask_bootstrap import Bootstrap
 
 # Initializing application
-app = Flask(__name__,instance_relative_config= True)
+def create_app(config_name):
+    app = Flask(__name__)
 
 # SETTING UP CONFIGURATION
-app.config.from_object(DevConfig)
-app.config.from_pyfile('config.py')
+    app.config.from_object(config_options[config_name])
 
-# bootstrap = Bootstrap(app)
-from app import view
-from app import error
+    return app

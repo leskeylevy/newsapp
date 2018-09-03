@@ -1,6 +1,6 @@
 class Source:
     '''
-    source clss definiton
+    source class definition
     '''
 
     def __init__(self, name, url, description, rt):

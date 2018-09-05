@@ -6,19 +6,9 @@
 * Choose your preferred/favourite news source and click on the top news by (favourite source) and just like that you wil get their top trending stories at that particular time.
 * You can now freely review the top news which will be accompanied by a brief overview of each story as well as the author of the story and an image related to the story. 
 ## Setup/Installation Requirements
-* click==6.7
-* dominate==2.3.1
-* Flask==1.0.2
-* Flask-Bootstrap==3.3.7.1
-* Flask-Script==2.0.6
-* gunicorn==19.9.0
-* itsdangerous==0.24
-* Jinja2==2.10
-* MarkupSafe==1.0
-* visitor==0.1.3
-* Werkzeug==0.14.1
+* PYTHON 3.6
 ## Known Bugs
-* The news are not grouped by categories but ratheronly a list of various high profile news outlets around the world.
+* The news are not grouped by categories but rather only a list of various high profile news outlets around the world.
 ## Technologies Used
 1. 'HTML'
 2. 'PYTHON'
